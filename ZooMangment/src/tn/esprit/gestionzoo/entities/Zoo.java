@@ -1,6 +1,13 @@
+package tn.esprit.gestionzoo.entities;
+
 public class Zoo {
     String name;
     String city;
+
+    public String getName() {
+        return name;
+    }
+
 
     //instruction 14:
     public static final int NBR_CAGES = 25;
@@ -17,7 +24,7 @@ public class Zoo {
     }
 
     public void displayZoo() {
-        System.out.println("Nom du Zoo : " + name);
+        System.out.println("Nom du tn.esprit.gestionzoo.entities.Zoo : " + name);
         System.out.println("Ville : " + city);
         System.out.println("Nombre de cages : " + NBR_CAGES);
     }
@@ -26,22 +33,28 @@ public class Zoo {
 
     @Override
     public String toString() {
-        return "Zoo [name=" + name + ", city=" + city +
+        return "tn.esprit.gestionzoo.entities.Zoo [name=" + name + ", city=" + city +
                 ", nbrCages=" + NBR_CAGES + "]";
+    }
+
+    //instruction 15:
+
+    public boolean isFull() {
+        return animalCount >= NBR_CAGES;
     }
 
     //instruction 10-12:
     public boolean addAnimal(Animal animal) {
 
-        if (animalCount >= animals.length) {
-            System.out.println("Zoo plein ! Impossible d'ajouter " + animal.name);
+        if (this.isFull()) {
+            System.out.println("tn.esprit.gestionzoo.entities.Zoo plein ! Impossible d'ajouter " + this.name);
             return false;
         }
 
 
         for (int i = 0; i < animalCount; i++) {
-            if (animals[i].name.equalsIgnoreCase(animal.name)) {
-                System.out.println("L'animal " + animal.name + " existe déjà dans le zoo !");
+            if (animals[i].getName().equalsIgnoreCase(this.name)) {
+                System.out.println("L'animal " + this.name + " existe déjà dans le zoo !");
                 return false;
             }
         }
@@ -69,7 +82,7 @@ public class Zoo {
 
     public int searchAnimal(String animalN) {
         for (int i = 0; i < animalCount; i++) {
-            if (animals[i].name.equalsIgnoreCase(animalN)) {
+            if (animals[i].getName().equalsIgnoreCase(animalN)) {
                 return i;
             }
         }
@@ -80,7 +93,7 @@ public class Zoo {
     //instruction 13:
     public boolean removeAnimal(Animal animal) {
         for (int i = 0; i < animalCount; i++) {
-            if (animals[i].name.equalsIgnoreCase(animal.name)) {
+            if (animals[i].getName().equalsIgnoreCase(this.name)) {
                 animals[i] = animals[animalCount - 1];
                 animals[animalCount - 1] = null;
                 animalCount--;
@@ -90,11 +103,7 @@ public class Zoo {
         return false;
     }
 
-    //instruction 15:
 
-    public boolean isZooFull() {
-        return animalCount >= NBR_CAGES;
-    }
 
     //instruction 16:
     public static Zoo comparerZoo(Zoo z1, Zoo z2) {

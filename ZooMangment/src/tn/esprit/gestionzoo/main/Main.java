@@ -1,10 +1,15 @@
+package tn.esprit.gestionzoo.main;
+
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
+
 public class Main {
     public static void main(String[] args) {
         Animal lion = new Animal("Felidae", "Lion", 5, true);
         Animal tiger = new Animal("Felida", "Tigre", 3, true);
 
-        Zoo myZoo = new Zoo("Esprit Zoo", "Tunis", 20);
-        Zoo monZoo = new Zoo(" Zoo", "Tunis", 50);
+        Zoo myZoo = new Zoo("Esprit tn.esprit.gestionzoo.entities.Zoo", "Tunis", 20);
+        Zoo monZoo = new Zoo(" tn.esprit.gestionzoo.entities.Zoo", "Tunis", 50);
 
 
 
@@ -48,13 +53,13 @@ public class Main {
 
         //instruction 15:
 
-        System.out.println("Zoo plein ? " + myZoo.isZooFull());
+        System.out.println("tn.esprit.gestionzoo.entities.Zoo plein ? " + myZoo.isFull());
 
 
         //instruction 16:
         Zoo comparer = Zoo.comparerZoo(myZoo,monZoo);
         if (comparer != null) {
-            System.out.println("Le zoo avec le plus d'animaux est : " + comparer.name);
+            System.out.println("Le zoo avec le plus d'animaux est : " + comparer.getName());
         } else {
             System.out.println("Les deux zoos ont le même nombre d'animaux.");
         }
