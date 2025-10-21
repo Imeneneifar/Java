@@ -1,7 +1,7 @@
 package tn.esprit.gestionzoo.main;
 
-import tn.esprit.gestionzoo.entities.Animal;
-import tn.esprit.gestionzoo.entities.Zoo;
+import tn.esprit.gestionzoo.entities.*;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -10,6 +10,14 @@ public class Main {
 
         Zoo myZoo = new Zoo("Esprit tn.esprit.gestionzoo.entities.Zoo", "Tunis", 20);
         Zoo monZoo = new Zoo(" tn.esprit.gestionzoo.entities.Zoo", "Tunis", 50);
+
+        //instruction20:
+
+        Aquatic poisson = new Aquatic("poisson", "poisson", 4, true, "sea");
+        Terrestrial cat = new Terrestrial("Felidae", "Tiger", 5, true, 4);
+
+        Dolphin dolphin = new Dolphin("Delphinidae", "Dolphin", 6, true, "Sea", 22.3f);
+        Penguin penguin = new Penguin("Spheniscidae", "Penguin", 3, false, "Antarctica", 35.5f);
 
 
 
@@ -53,7 +61,7 @@ public class Main {
 
         //instruction 15:
 
-        System.out.println("tn.esprit.gestionzoo.entities.Zoo plein ? " + myZoo.isFull());
+        System.out.println("Zoo plein ? " + myZoo.isFull());
 
 
         //instruction 16:
@@ -65,10 +73,40 @@ public class Main {
         }
 
 
+        //instruction 21:
+
+        System.out.println(poisson);
+        System.out.println(cat);
+
+        System.out.println(dolphin);
+        System.out.println(penguin);
+
+
+        poisson.swim();
+        dolphin.swim();
+        penguin.swim();
 
 
 
 
+        // Prosit 6
+        Zoo zoo = new Zoo();
+        Dolphin d = new Dolphin("Mammal","Flipper",5,true,"Ocean",25.5f);
+        Penguin p1 = new Penguin("Bird","Pingu",3,false,"Arctic",18f);
+        Penguin p2 = new Penguin("Bird","Skipper",4,false,"Antarctica",22f);
+
+        zoo.addAquaticAnimal(d);
+        zoo.addAquaticAnimal(p1);
+        zoo.addAquaticAnimal(p2);
+
+        zoo.makeAllAquaticSwim();
+
+        System.out.println("Max penguin depth = " + zoo.maxPenguinDepth());
+
+        zoo.printCountsByType();
+
+        Penguin p3 = new Penguin("Bird","Pingu",3,false,"Arctic",30f);
+        System.out.println("p1 equals p3 ? " + p1.equals(p3));
 
     }
 }

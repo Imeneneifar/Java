@@ -16,6 +16,8 @@ public class Zoo {
 
     int animalCount = 0;
 
+    public Zoo() {
+    }
 
 
     public Zoo(String name, String city, int nbrCages) {
@@ -47,7 +49,7 @@ public class Zoo {
     public boolean addAnimal(Animal animal) {
 
         if (this.isFull()) {
-            System.out.println("tn.esprit.gestionzoo.entities.Zoo plein ! Impossible d'ajouter " + this.name);
+            System.out.println("tn.esprit.gestionzoo.enttiies.Zoo plein ! Impossible d'ajouter " + this.name);
             return false;
         }
 
@@ -117,12 +119,59 @@ public class Zoo {
     }
 
 
+    Aquatic[] aquaticAnimals = new Aquatic[NBR_CAGES];
+    int aquaticAnimalCount = 0;
+    public Aquatic[] getAquaticAnimals() {
+        return aquaticAnimals;
+    }
+    public void setAquaticAnimals(Aquatic[] aquaticAnimals) {
+        this.aquaticAnimals = aquaticAnimals;
+    }
 
+    public int getAquaticAnimalCount() {
+        return aquaticAnimalCount;
 
+    }
+    public void setAquaticAnimalCount(int aquaticAnimalCount) {
+        this.aquaticAnimalCount = aquaticAnimalCount;
+    }
 
+    // Prosit 6: add aquatic animal to the dedicated array
+    public boolean addAquaticAnimal(Aquatic a) {
+        if (a == null) return false;
+        if (aquaticAnimalCount >= aquaticAnimals.length) return false;
+        aquaticAnimals[aquaticAnimalCount++] = a;
+        return true;
+    }
 
+    // Prosit 6: iterate and call swim() on all aquatic animals
+    public void makeAllAquaticSwim() {
+        for (int i = 0; i < aquaticAnimalCount; i++) {
+            if (aquaticAnimals[i] != null) aquaticAnimals[i].swim();
+        }
+    }
 
+    // Prosit 6: max depth among penguins
+    public float maxPenguinDepth() {
+        float max = 0f;
+        for (int i = 0; i < aquaticAnimalCount; i++) {
+            if (aquaticAnimals[i] instanceof Penguin) {
+                float depth = ((Penguin) aquaticAnimals[i]).getSwimmingDepth();
+                if (depth > max) max = depth;
+            }
+        }
+        return max;
+    }
 
+    // Prosit 6: count dolphins and penguins
+    public void printCountsByType() {
+        int dolphins = 0, penguins = 0;
+        for (int i = 0; i < aquaticAnimalCount; i++) {
+            if (aquaticAnimals[i] instanceof Dolphin) dolphins++;
+            else if (aquaticAnimals[i] instanceof Penguin) penguins++;
+        }
+        System.out.println("Dolphins: " + dolphins + ", Penguins: " + penguins);
+    }
 
 
 }
