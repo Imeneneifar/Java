@@ -29,8 +29,13 @@ public class Main {
         //System.out.println(tiger);
         //System.out.println(myZoo);
 
+        //instruction10:
+        //myZoo.addAnimal(lion);
+        //myZoo.addAnimal(tiger);
+        //instruction12:
+        //myZoo.addAnimal(lion);
 
-
+        //monZoo.addAnimal(tiger);
 
 
 
@@ -109,7 +114,7 @@ public class Main {
         try {
             zoo.addAnimal(new Dolphin("Dauphin", "Flipper", 5, true, "Mer", 10f));
         } catch (ZooFullException | InvalidAgeException e) {
-            System.out.println("⚠️ Erreur : " + e.getMessage());
+            System.out.println(" Erreur : " + e.getMessage());
         } finally {
             System.out.println("Nombre total d’animaux : " + zoo.getAnimalCount());
         }
