@@ -8,6 +8,9 @@ public class Zoo {
         return name;
     }
 
+    public int getAnimalCount() {
+        return animalCount;
+    }
 
     //instruction 14:
     public static final int NBR_CAGES = 25;
@@ -46,26 +49,32 @@ public class Zoo {
     }
 
     //instruction 10-12:
-    public boolean addAnimal(Animal animal) {
+    // Prosit 7 : addAnimal avec exceptions
+    public void addAnimal(Animal animal) throws ZooFullException, InvalidAgeException {
 
-        if (this.isFull()) {
-            System.out.println("tn.esprit.gestionzoo.enttiies.Zoo plein ! Impossible d'ajouter " + this.name);
-            return false;
+        if (animal == null) {
+            return;
         }
 
+        if (animal.getAge() < 0) {
+            throw new InvalidAgeException("Âge d’animal invalide : l’âge ne peut pas être négatif.");
+        }
+
+        if (isFull()) {
+            throw new ZooFullException("Le zoo est plein, impossible d’ajouter un nouvel animal.");
+        }
 
         for (int i = 0; i < animalCount; i++) {
-            if (animals[i].getName().equalsIgnoreCase(this.name)) {
-                System.out.println("L'animal " + this.name + " existe déjà dans le zoo !");
-                return false;
+            if (animals[i].getName().equalsIgnoreCase(animal.getName())) {
+                System.out.println("L'animal " + animal.getName() + " existe déjà dans le zoo !");
+                return;
             }
         }
 
-
         animals[animalCount] = animal;
         animalCount++;
-        return true;
     }
+
 
 
 
