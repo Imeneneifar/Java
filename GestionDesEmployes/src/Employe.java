@@ -10,6 +10,12 @@ public class Employe {
     public Employe() {}
 
     public Employe(int id, String nom, String prenom, String nomDepart, int grade) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.nomDepart = nomDepart;
+        this.grade = grade;
+
     }
 
     public int getId() {
@@ -46,8 +52,12 @@ public class Employe {
 
     @Override
     public String toString() {
-        return "[id:" + id + ", nom:" + nom  + ", prenom:"
+        return "Employe[id:" + id + ", nom:" + nom  + ", prenom:"
                 + prenom + ", nomDepart:" + nomDepart
-                + ", grade:" + grade + "]";
+                + ", grade:" + grade + "]\n";
     }
+
+
+
 }
+
